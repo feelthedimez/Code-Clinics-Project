@@ -74,10 +74,10 @@ wtc-cal
 
 ## Working with your Personal Calendar
 
-If you're not in @wethinkcode.co.za email organisation, the system will automatically kick you out. So, to move around that, go to:
+If you're not in @wethinkcode.co.za email organization, the system will automatically kick you out. So, to move around that, go to:
 
 ```bash
-cd ~/code-clinic-booking-system/codeclinics/login/user_auth.py
+code ~/code-clinic-booking-system/codeclinics/login/user_auth.py
 ```
 On the function ```def validate_email()``` on line 67, change the statement of the email ```@wethinkcode``` to your prefered email domain of your organisation - it can event be ```@gmail.com``` for testing purposes. 
 
