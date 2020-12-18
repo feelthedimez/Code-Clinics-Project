@@ -1,0 +1,26 @@
+[
+    [
+        "2020-12-14",
+        "10:00:00",
+        "Hello World!",
+        "kmohlabu@student.wethinkcode.co.za",
+        {
+            "email": "tetema@student.wethinkcode.co.za"
+        },
+        "ajmi4ctl2va0mcaut7flhr1tc4",
+        "[BOOKED]",
+        "Testing 101"
+    ],
+    [
+        "2020-12-15",
+        "10:00:00",
+        "Hello WOrld!",
+        "tetema@student.wethinkcode.co.za",
+        {
+            "email": "kmohlabu@student.wethinkcode.co.za"
+        },
+        "l5a0odkpo5o81puk8vjio5ureo",
+        "[BOOKED]",
+        "Haha!"
+    ]
+]

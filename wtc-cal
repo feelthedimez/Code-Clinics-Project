@@ -1,0 +1,116 @@
+#!/usr/bin/python3
+import sys
+import os
+
+try:
+    from login import user_auth
+    from bookings.list_calendars import *
+    from bookings.volunteer import *
+    from bookings.patient import *
+    from bookings.processing_data import save_to_ics
+
+
+except ImportError:
+    print("Missing Packages")
+    print("Run 'cal-setup' to install the required the packages.")
+    sys.exit()
+
+
+valid_sys_commands = ['setup', 'config', 'slot_details', 'my_cal', 'volunteer', 
+'status', 'login', 'logout', 'slots','book', 'cancel', 'logout', 'help']
+
+
+def command_instructions():
+    """This function prints out statements that shows how the booking system works.
+    """
+    
+    if len(sys.argv) >= 2 and sys.argv[1] != 'help':
+        command = ""
+        for arg in sys.argv[1:]:
+            command += f"{arg} "
+        print(f"Unrecognized command: \"wtc-cal {command.strip()}\"")
+    elif len(sys.argv) == 1:
+        print("Please provide some options\n")
+        print("\tusage: wtc-cal <command> [args]")
+
+    
+    print('\nThese are wtc-cal commands that can be used in this Code Clinic:\n')
+
+    print("\thelp\t\tView commands to run wtc-cal tool\n")
+
+    print('setup and login')
+    print('\t\t\tUsed to setup the wtc-cal tool')
+    print('\tstatus\t\tUsed to check user connection status')
+    print('\tlogin\t\tUsed to login')
+    print('\tlogout\t\tUsed to logout')
+    print('\tconfig\t\tUsed to config\n')
+    
+    print('processing slots')
+    print('\tvolunteer\tCreate a slot to be booked')
+    print('\tbook\t\tUsed to book an empty slot as a patient')
+    print('\tcancel\t\tUsed to cancel a booking or volunteering slot\n')
+
+    print('calendars and viewing')
+    print('\tslots\t\tView volunteer slots')
+    print("\tslot_details \tView details of a given slot")
+    print('\tmy_cal\t\tView your personal calendar\n\n')
+
+
+def command_sys_argv():
+    """
+    This function handles command line arguments that work with the booking system.
+    """
+
+    if len(sys.argv) >= 2 and sys.argv[1] in valid_sys_commands:
+        command = sys.argv[1]
+
+        # if 'setup' == command:
+        #     install_packages()
+        #     pass
+        if 'status' == command:
+            user_auth.get_user_status()
+        elif 'login' == command:
+            user_auth.user_login()
+        elif 'config' == command:
+            user_auth.show_config()
+        elif 'logout' == command:
+            if os.path.exists(f"{sys.path[0]}/creds/token.pickle"):
+                save_data(get_code_clinics_calendar())
+            user_auth.user_logout()
+        elif 'help' == command:
+            command_instructions()
+        elif command in valid_sys_commands:
+            if user_auth.get_login_state():
+                if "slots" == command:
+                    show_calendars()
+                elif "slot_details" == command:
+                    slot_details()
+                elif "my_cal" == command:
+                    show_calendars('primary')
+                elif "book" == command:
+                    book()
+                    save_data(get_code_clinics_calendar())
+                elif "volunteer" == command:
+                    volunteer()
+                    save_data(get_code_clinics_calendar())
+                elif "cancel" == command:
+                    cancel()
+                    save_data(get_code_clinics_calendar())
+            else:
+                print("\n  Please login to use this command!\n")
+    else:
+        command_instructions()
+
+
+if __name__ == "__main__":
+    
+    if user_auth.get_login_state():
+    # This updates the data every time wtc-cal is ran that is if you are 
+    # logged in
+        save_data(get_code_clinics_calendar())
+
+    # Auto logs out user after 30 mins
+    user_auth.auto_logout()
+
+    # Runs wtc-cal commands
+    command_sys_argv()
