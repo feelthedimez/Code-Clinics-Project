@@ -56,21 +56,6 @@ Run the following to see what type of CLI commands work with our system.
 ```bash
 wtc-cal
 ````
-## Creating `credentials.json` file from Google Developer Console
-
-1. Go to `Google Calendar API Developer` console, and create a new project - then get your personal API keys with secret files using your prefered email. The file is called ```credentials.json```.
-
-2. Copy&Paste that ```credentials.json``` file in creds package.
-```bash
-cd ~/code-clinic-booking-system/codeclinics/creds
-```
-3. Change the email domain where the users will be writing their events to - to your prefered `base email`
-
-```bash
-code ~/code-clinic-booking-system/codeclinics
-```
-Go to each module and change the `base email` to your prefered email domain.
-
 ## Working with your Personal Calendar
 
 If you're not in @wethinkcode.co.za email organization, the system will automatically kick you out. So, to move around that, go to:
