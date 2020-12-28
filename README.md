@@ -56,13 +56,15 @@ Run the following to see what type of CLI commands work with our system.
 ```bash
 wtc-cal
 ````
-# Creating `credentials.json` file from Google Developer Console
+## Creating `credentials.json` file from Google Developer Console
 
-1. Go to `Google API Developer` console, and create a new project - then get your personal API keys with secret files using your prefered email.
+1. Go to `Google Calendar API Developer` console, and create a new project - then get your personal API keys with secret files using your prefered email. The file is called ```credentials.json```.
 
-The file is called ```credentials.json```.
-
-2. Change the email domain where the users will be writing their events to - to your prefered `base email`
+2. Copy&Paste that ```credentials.json``` file in creds package.
+```bash
+cd ~/code-clinic-booking-system/codeclinics/creds
+```
+3. Change the email domain where the users will be writing their events to - to your prefered `base email`
 
 ```bash
 code ~/code-clinic-booking-system/codeclinics
