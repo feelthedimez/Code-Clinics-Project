@@ -1,23 +1,8 @@
 # Code Clinics Group Project
 
-Code Clinics is a booking CLI system that uses Google API. A student needs to book a specific time slot to attend a Coding Clinic session, and typically these sessions are one-on-one sessions with a more experienced person who can advise on the coding problem at hand. It only works with @wethinkcode.co.za email domain only.
+Code Clinics is a booking CLI system that uses Google API. A patient needs to book a specific time slot to attend a Coding Clinic session, and typically these sessions are one-on-one sessions with a more experienced person who can advise on the coding problem at hand. It only works with `@wethinkcode.co.za` email domain only as default.
 
-### Bonus Functionality
-
-There is an ics file - which is a Calendar Document. You can open it and see the bookings in an Application of your choice.
-
-Path: 
-```bash
-~/code-clinic-booking-system/codeclinics/files/ics
-```
-
-### Things still to be Done
-
-1. Adding more tests for certain modules.
-2. Adding a functionality that will make the volunteer and patient 'status' to the event respond to 'Going' instead of 'Maybe'.
-3. Making the terminal scroll horizontally rather than text wrapping information - and making the terminal output be clustered.
-
-
+# Installation 
 ## Requirements
 This system works on a Linux/iMac with bash terminal.
 
@@ -71,6 +56,18 @@ Run the following to see what type of CLI commands work with our system.
 ```bash
 wtc-cal
 ````
+# Creating `credentials.json` file from Google Developer Console
+
+1. Go to `Google API Developer` console, and create a new project - then get your personal API keys with secret files using your prefered email.
+
+The file is called ```credentials.json```.
+
+2. Change the email domain where the users will be writing their events to - to your prefered `base email`
+
+```bash
+code ~/code-clinic-booking-system/codeclinics
+```
+Go to each module and change the `base email` to your prefered email domain.
 
 ## Working with your Personal Calendar
 
@@ -80,6 +77,16 @@ If you're not in @wethinkcode.co.za email organization, the system will automati
 code ~/code-clinic-booking-system/codeclinics/login/user_auth.py
 ```
 On the function ```def validate_email()``` on line 67, change the statement of the email ```@wethinkcode``` to your prefered email domain of your organisation - it can event be ```@gmail.com``` for testing purposes. 
+
+
+### Bonus Functionality
+
+There is an ics file - which is a Calendar Document. You can open it and see the bookings in an Application of your choice.
+
+Path: 
+```bash
+~/code-clinic-booking-system/codeclinics/files/ics
+```
 
 ### Volunteering for a slot
 
@@ -104,6 +111,12 @@ wtc-cal book <ui_code>
 ```bash
 wtc-cal cancel <ui_code>
 ```
+
+### Things still to be Done
+
+1. Adding more tests for certain modules.
+2. Adding a functionality that will make the volunteer and patient 'status' to the event respond to 'Going' instead of 'Maybe'.
+3. Making the terminal scroll horizontally rather than text wrapping information - and making the terminal output be clustered.
 
 # Authors and Acknowledgement
 
